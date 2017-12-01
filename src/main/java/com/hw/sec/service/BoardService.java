@@ -10,7 +10,7 @@ import com.hw.sec.domain.Employee;
 
 @Component
 public class BoardService {
-
+ 
 	@Autowired
 	EmpRepository er;
 	
