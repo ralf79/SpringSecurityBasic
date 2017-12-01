@@ -19,8 +19,8 @@ public class ServerInitializer implements ApplicationRunner {
 
         //code goes here
 		System.out.println("========================ServerInitializer start===================");
-		er.save(new Employee("ralf79", 39, "pw"));
-		er.save(new Employee("ralf78", 40, "pw"));
+		er.save(new Employee("admin", 39, "1234","ADMIN"));
+		er.save(new Employee("user", 40, "1234","USER"));
 
 
 		

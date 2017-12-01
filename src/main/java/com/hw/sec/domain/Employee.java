@@ -17,6 +17,7 @@ public class Employee {
 	private String name;
 	private int age;
 	private String pw;
+	private String auth;
 	
 	
 	
@@ -26,11 +27,26 @@ public class Employee {
 	
 
 
-	public Employee(String name, int age, String pw) {
+	public Employee(String name, int age, String pw,String auth) {
 		super();
 		this.name = name;
 		this.age = age;
 		this.pw = pw;
+		this.auth = auth;
+	}
+
+
+	
+
+	public String getAuth() {
+		return auth;
+	}
+
+
+
+
+	public void setAuth(String auth) {
+		this.auth = auth;
 	}
 
 

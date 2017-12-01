@@ -17,4 +17,9 @@ public class BoardService {
 	public List<Employee> getList(){
 		return er.findAll();
 	}
+	
+	public Employee getUsers(String ac)
+	{
+		return er.findByName(ac);
+	}
 }

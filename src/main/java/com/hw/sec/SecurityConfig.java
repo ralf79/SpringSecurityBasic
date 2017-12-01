@@ -13,6 +13,9 @@ import org.springframework.security.web.header.writers.frameoptions.XFrameOption
 @Configuration 
 public class SecurityConfig  extends WebSecurityConfigurerAdapter{
 
+	@Autowired
+	LoginUserDetailsService luds;
+	
 	protected void configure(HttpSecurity http) throws Exception {
 		http
 		.authorizeRequests() 
@@ -25,17 +28,21 @@ public class SecurityConfig  extends WebSecurityConfigurerAdapter{
 			.and().exceptionHandling().accessDeniedPage("/denied");
 	}
 
-	@Autowired
-	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-		auth
-			.inMemoryAuthentication()
-				.withUser("admin").password("1234").authorities("ADMIN");
-		auth
-		.inMemoryAuthentication()
-			.withUser("user").password("1234").authorities("USER");
-				
-	}
+//	@Autowired
+//	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+//		auth
+//			.inMemoryAuthentication()
+//				.withUser("admin").password("1234").authorities("ADMIN");
+//		auth
+//		.inMemoryAuthentication()
+//			.withUser("user").password("1234").authorities("USER");
+//				
+//	}
 	
+	@Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+         auth.userDetailsService(luds);
+    }
 	
 	
 }
