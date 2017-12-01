@@ -13,11 +13,27 @@ public class EmpController {
 	@Autowired
 	BoardService bs;
 	
-	@RequestMapping("/list")
+	@RequestMapping("/admin")
 	public String getlist(Model model){
 		System.out.println(bs.getList().size());
 		model.addAttribute("list", bs.getList());
 		
-		return "list";
+		return "admin";
 	}
+	
+	@RequestMapping("/")
+	public String index(Model model) {
+		return "index";
+	}
+	
+	@RequestMapping("/denied")
+	public String denied(Model model) {
+		return "denied";
+	}
+	
+	@RequestMapping("/login")
+	public String login(Model model) {
+		return "login";
+	}
+	
 }

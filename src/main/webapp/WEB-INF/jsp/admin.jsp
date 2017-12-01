@@ -27,7 +27,7 @@
 	  <tbody>
 		  	<c:forEach var="data" items="${list}">
 				<tr>
-		      		<td><p>${data.text}</p></td>
+		      		<td><p>${data.name}</p></td>
 		    	</tr>
 			</c:forEach>
 	  </tbody>
