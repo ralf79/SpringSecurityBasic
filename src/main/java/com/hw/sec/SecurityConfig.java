@@ -19,8 +19,16 @@ public class SecurityConfig  extends WebSecurityConfigurerAdapter{
 	protected void configure(HttpSecurity http) throws Exception {
 		http
 		.authorizeRequests() 
+			.antMatchers("/console/**").permitAll()
 			.antMatchers("/admin/**").hasAuthority("ADMIN")  
 			.antMatchers("/**").permitAll()                  
+			//.anyRequest().authenticated()                                                   
+			.and()
+			.csrf().ignoringAntMatchers("/console/**")
+        .and()
+        .headers()
+            .addHeaderWriter(
+                new XFrameOptionsHeaderWriter(new WhiteListedAllowFromStrategy(Arrays.asList("localhost"))))
         .and()
 		.formLogin()
 			.loginPage("/login") // 로그인 페이지로 이동시킴
@@ -43,6 +51,11 @@ public class SecurityConfig  extends WebSecurityConfigurerAdapter{
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
          auth.userDetailsService(luds);
     }
+
+//	@Override
+//	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+//		auth.userDetailsService(luds).passwordEncoder(luds.passwordEncoder());
+//	}
 	
 	
 }

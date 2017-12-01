@@ -21,6 +21,8 @@ public class LoginUserDetailsService implements UserDetailsService{
 
 	@Autowired
 	BoardService userService;
+
+//	private PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 	
 	@Override
 	public UserDetails loadUserByUsername(String name) throws UsernameNotFoundException {
@@ -29,5 +31,9 @@ public class LoginUserDetailsService implements UserDetailsService{
 		
 		return new LoginUserDetails(emp.getName(),emp.getPw(),AuthorityUtils.createAuthorityList(emp.getAuth()));
 	}
+	
+//	public PasswordEncoder passwordEncoder() { 
+//		return this.passwordEncoder; 
+//	}
 	
 }
